@@ -10,6 +10,8 @@ var split = require('split');
 const alternate_fn = function(odd_fn, even_fn) {
     // we start with even (at 0)
     let f = even_fn; // closed over by returned anon. function below
+    // the returned function has closure over f, so it can be set by
+    // consecutive calls of that function (so we actually have a state!)
     return function(buffer) {
         f = (f === even_fn) ? odd_fn : even_fn;
         f.call(this, buffer); // `this` will be the string on which f is called
