@@ -1,8 +1,6 @@
 var duplexer = require('duplexer2');
 var through = require('through2').obj; // obj is needed to work!
 
-
-
 module.exports = function(counter) {
     var counts = {};
     var input = through(write, end);
